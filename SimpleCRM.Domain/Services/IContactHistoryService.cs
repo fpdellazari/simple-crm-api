@@ -5,6 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace SimpleCRM.Domain.Services {
-    internal interface IContactHistoryService {
+    public interface IContactHistoryService {
     }
 }

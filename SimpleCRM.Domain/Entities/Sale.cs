@@ -5,6 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace SimpleCRM.Domain.Entities {
-    internal class Sale {
+    public class Sale {
     }
 }

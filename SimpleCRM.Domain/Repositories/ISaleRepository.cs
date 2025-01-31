@@ -5,6 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace SimpleCRM.Domain.Repositories {
-    internal interface ISaleRepository {
+    public interface ISaleRepository {
     }
 }

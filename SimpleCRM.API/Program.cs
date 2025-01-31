@@ -6,6 +6,8 @@ using Microsoft.OpenApi.Models;
 using System.Text;
 using System.Data;
 using Microsoft.Data.SqlClient;
+using SimpleCRM.Domain.Repositories;
+using SimpleCRM.Infrastructure.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,6 +22,17 @@ builder.Services.AddScoped<IDbConnection>(db => new SqlConnection(
 
 // Services
 builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
+builder.Services.AddScoped<ICustomerService, CustomerService>();
+builder.Services.AddScoped<IContactHistoryService, ContactHistoryService>();
+builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<ISaleService, SaleService>();
+
+// Repositories
+builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
+builder.Services.AddScoped<IContactHistoryRepository, ContactHistoryRepository>();
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<ISaleRepository, SaleRepository>();
+
 
 // Swagger
 builder.Services.AddSwaggerGen(swagger => {
