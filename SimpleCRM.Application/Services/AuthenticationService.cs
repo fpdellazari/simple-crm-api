@@ -1,5 +1,5 @@
-﻿using AspNetCoreWebAPIv8.Domain.Models;
-using AspNetCoreWebAPIv8.Domain.Services;
+﻿using SimpleCRM.Domain.Models;
+using SimpleCRM.Domain.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System;
@@ -10,7 +10,7 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AspNetCoreWebAPIv8.Application.Services {
+namespace SimpleCRM.Application.Services {
     public class AuthenticationService : IAuthenticationService {
 
         private readonly IConfiguration _configuration;

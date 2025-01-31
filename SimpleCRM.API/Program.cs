@@ -1,5 +1,5 @@
-using AspNetCoreWebAPIv8.Application.Services;
-using AspNetCoreWebAPIv8.Domain.Services;
+using SimpleCRM.Application.Services;
+using SimpleCRM.Domain.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;

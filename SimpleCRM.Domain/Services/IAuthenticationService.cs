@@ -1,11 +1,11 @@
-﻿using AspNetCoreWebAPIv8.Domain.Models;
+﻿using SimpleCRM.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AspNetCoreWebAPIv8.Domain.Services {
+namespace SimpleCRM.Domain.Services {
     public interface IAuthenticationService {
         Task<string> Authenticate(AuthenticationModel authentication);
     }

@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AspNetCoreWebAPIv8.Application\AspNetCoreWebAPIv8.Application.csproj" />
+    <ProjectReference Include="..\SimpleCRM.Application\SimpleCRM.Application.csproj" />
   </ItemGroup>
 
 </Project>

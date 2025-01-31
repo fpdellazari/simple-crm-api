@@ -1,4 +1,4 @@
-namespace AspNetCoreWebAPIv8 {
+namespace SimpleCRM {
     public class WeatherForecast {
         public DateOnly Date { get; set; }
 

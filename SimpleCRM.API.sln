@@ -3,21 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AspNetCoreWebAPIv8.API", "AspNetCoreWebAPIv8.API", "{531F34F0-AA51-4CD1-BB6E-0C076C1EFD74}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SimpleCRM.API", "SimpleCRM.API", "{531F34F0-AA51-4CD1-BB6E-0C076C1EFD74}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCoreWebAPIv8.API", "AspNetCoreWebAPIv8.API\AspNetCoreWebAPIv8.API.csproj", "{D695E6EA-5422-4FDD-A3A8-B04927524C33}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleCRM.API", "SimpleCRM.API\SimpleCRM.API.csproj", "{D695E6EA-5422-4FDD-A3A8-B04927524C33}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AspNetCoreWebAPIv8.Application", "AspNetCoreWebAPIv8.Application", "{19090499-8102-41DE-8AFB-A9D09CFE4838}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SimpleCRM.Application", "SimpleCRM.Application", "{19090499-8102-41DE-8AFB-A9D09CFE4838}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetCoreWebAPIv8.Application", "AspNetCoreWebAPIv8.Application\AspNetCoreWebAPIv8.Application.csproj", "{D822DF8D-88F7-4669-91E8-0B40E4BF4A1B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleCRM.Application", "SimpleCRM.Application\SimpleCRM.Application.csproj", "{D822DF8D-88F7-4669-91E8-0B40E4BF4A1B}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AspNetCoreWebAPIv8.Domain", "AspNetCoreWebAPIv8.Domain", "{6545E155-DA35-475B-8E94-732567C23299}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SimpleCRM.Domain", "SimpleCRM.Domain", "{6545E155-DA35-475B-8E94-732567C23299}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetCoreWebAPIv8.Domain", "AspNetCoreWebAPIv8.Domain\AspNetCoreWebAPIv8.Domain.csproj", "{473B29F9-0ADB-4653-B4D8-95C6EBB94E3C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleCRM.Domain", "SimpleCRM.Domain\SimpleCRM.Domain.csproj", "{473B29F9-0ADB-4653-B4D8-95C6EBB94E3C}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AspNetCoreWebAPIv8.Infrastructure", "AspNetCoreWebAPIv8.Infrastructure", "{ABEC7115-436A-40DD-94A7-8BE3B33EA593}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SimpleCRM.Infrastructure", "SimpleCRM.Infrastructure", "{ABEC7115-436A-40DD-94A7-8BE3B33EA593}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetCoreWebAPIv8.Infrastructure", "AspNetCoreWebAPIv8.Infrastructure\AspNetCoreWebAPIv8.Infrastructure.csproj", "{F89E0CF5-8BC6-4D24-89C7-005217E2112F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleCRM.Infrastructure", "SimpleCRM.Infrastructure\SimpleCRM.Infrastructure.csproj", "{F89E0CF5-8BC6-4D24-89C7-005217E2112F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -13,8 +13,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AspNetCoreWebAPIv8.Domain\AspNetCoreWebAPIv8.Domain.csproj" />
-    <ProjectReference Include="..\AspNetCoreWebAPIv8.Infrastructure\AspNetCoreWebAPIv8.Infrastructure.csproj" />
+    <ProjectReference Include="..\SimpleCRM.Domain\SimpleCRM.Domain.csproj" />
+    <ProjectReference Include="..\SimpleCRM.Infrastructure\SimpleCRM.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

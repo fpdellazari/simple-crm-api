@@ -1,8 +1,8 @@
-﻿using AspNetCoreWebAPIv8.Domain.Models;
-using AspNetCoreWebAPIv8.Domain.Services;
+﻿using SimpleCRM.Domain.Models;
+using SimpleCRM.Domain.Services;
 using Microsoft.AspNetCore.Mvc;
 
-namespace AspNetCoreWebAPIv8.API.Controllers {
+namespace SimpleCRM.API.Controllers {
     public class AuthenticationController : Controller {
 
         public readonly IAuthenticationService _authenticationService;
