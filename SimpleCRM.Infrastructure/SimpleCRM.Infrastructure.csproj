@@ -10,4 +10,8 @@
     <ProjectReference Include="..\SimpleCRM.Domain\SimpleCRM.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Scripts\" />
+  </ItemGroup>
+
 </Project>
