@@ -21,9 +21,9 @@ namespace SimpleCRM.Application.Services {
         }
 
         public IEnumerable<CustomerModel> Get() {
-            var users = _customerRepository.Get();
-            var usersDTO = _mapper.Map<List<CustomerModel>>(users);
-            return usersDTO;
+            var customers = _customerRepository.Get();
+            var customersModel = _mapper.Map<List<CustomerModel>>(customers);
+            return customersModel;
         }
 
         public void Insert(CustomerModel customerModel) {

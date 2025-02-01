@@ -30,7 +30,7 @@ namespace SimpleCRM.API.Controllers {
 
         [HttpPost]
         [Authorize]
-        public ActionResult<CustomerCreateRequest> Post([FromBody] CustomerCreateRequest customerCreateRequest) {
+        public ActionResult<string> Post([FromBody] CustomerCreateRequest customerCreateRequest) {
 
             if (!ModelState.IsValid) {
                 return BadRequest(ModelState);
