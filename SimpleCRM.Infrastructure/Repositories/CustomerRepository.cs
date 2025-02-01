@@ -29,7 +29,6 @@ namespace SimpleCRM.Infrastructure.Repositories {
                               FROM Customer; ";
 
             var customers = _dbConnection.Query<Customer>(query).ToList();
-
             return customers;
         }
 

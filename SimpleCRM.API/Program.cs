@@ -9,6 +9,10 @@ using Microsoft.Data.SqlClient;
 using SimpleCRM.Domain.Repositories;
 using SimpleCRM.Infrastructure.Repositories;
 using SimpleCRM.Application.Mapper;
+using SimpleCRM.Infrastructure.Repositories.Reports;
+using SimpleCRM.Domain.Repositories.Reports;
+using SimpleCRM.Domain.Services.Reports;
+using SimpleCRM.Application.Services.Reports;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -30,12 +34,15 @@ builder.Services.AddScoped<ICustomerService, CustomerService>();
 builder.Services.AddScoped<IContactHistoryService, ContactHistoryService>();
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<ISaleService, SaleService>();
+builder.Services.AddScoped<IDashboardsService, DashboardsService>();
 
 // Repositories
 builder.Services.AddScoped<ICustomerRepository, CustomerRepository>();
 builder.Services.AddScoped<IContactHistoryRepository, ContactHistoryRepository>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<ISaleRepository, SaleRepository>();
+builder.Services.AddScoped<IDashboardsRepository, DashboardsRepository>();
+
 
 
 // Swagger

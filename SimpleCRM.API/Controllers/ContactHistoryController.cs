@@ -25,7 +25,7 @@ namespace SimpleCRM.API.Controllers {
                 var contactHistories = _contactHistoryService.Get();
                 return Ok(contactHistories);
             } catch (Exception e) {
-                return BadRequest(e.Message);
+                return StatusCode(500, $"Erro interno: {e.Message}");
             }
         }
 

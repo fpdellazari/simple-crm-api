@@ -24,7 +24,7 @@ namespace SimpleCRM.API.Controllers {
                 var customers = _customerService.Get();
                 return Ok(customers);
             } catch (Exception e) {
-                return BadRequest(e.Message);
+                return StatusCode(500, $"Erro interno: {e.Message}");
             }
         }
 
