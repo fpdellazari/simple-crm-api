@@ -17,6 +17,10 @@ namespace SimpleCRM.Application.Mapper {
             CreateMap<CustomerModel, Customer>();
             CreateMap<ContactHistory, ContactHistoryModel>();
             CreateMap<ContactHistoryModel, ContactHistory>();
+            CreateMap<Sale, SaleModel>();
+            CreateMap<SaleModel, Sale>();
+            CreateMap<Product, ProductModel>();
+            CreateMap<ProductModel, Product>();
         }
 
     }

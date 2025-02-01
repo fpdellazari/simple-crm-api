@@ -19,7 +19,7 @@ namespace SimpleCRM.API.Controllers {
         }
 
         [HttpGet]
-        //[Authorize]
+        [Authorize]
         public ActionResult Get() {
             try {
                 var contactHistories = _contactHistoryService.Get();
@@ -30,7 +30,7 @@ namespace SimpleCRM.API.Controllers {
         }
 
         [HttpPost]
-        //[Authorize]
+        [Authorize]
         public ActionResult<string> Post([FromBody] ContactHistoryCreateRequest contactHistoryCreateRequest) {
 
             if (!ModelState.IsValid) {
@@ -38,7 +38,6 @@ namespace SimpleCRM.API.Controllers {
             }
 
             try {
-
                 ContactHistoryModel contactHistoryModel = new ContactHistoryModel() {
                     CustomerId = contactHistoryCreateRequest.CustomerId,
                     Type = contactHistoryCreateRequest.Type,

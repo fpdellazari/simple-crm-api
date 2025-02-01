@@ -13,6 +13,7 @@ namespace SimpleCRM.Domain.Models {
         public ContactStatus Type { get; set; }
         public DateTime ContactDate { get; set; }
         public string Notes { get; set; }
-        public CustomerModel? Customer{ get; set; }
+
+        public CustomerModel Customer{ get; set; }
     }
 }

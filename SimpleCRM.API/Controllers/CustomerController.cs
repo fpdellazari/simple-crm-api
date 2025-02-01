@@ -36,8 +36,7 @@ namespace SimpleCRM.API.Controllers {
                 return BadRequest(ModelState);
             }
 
-            try {
-                
+            try {                
                 CustomerModel customerModel = new CustomerModel() { 
                     Name = customerCreateRequest.Name,
                     Age = customerCreateRequest.Age,

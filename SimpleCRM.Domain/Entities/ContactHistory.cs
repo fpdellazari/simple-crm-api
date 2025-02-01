@@ -12,6 +12,7 @@ namespace SimpleCRM.Domain.Entities {
         public ContactStatus Type { get; set; }
         public DateTime ContactDate { get; set; }
         public string Notes { get; set; }
-        public Customer? Customer { get; set; }
+
+        public Customer Customer { get; set; }
     }
 }
