@@ -1,36 +1,55 @@
-﻿using Microsoft.AspNetCore.Mvc;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using SimpleCRM.Domain.Entities;
+using SimpleCRM.Domain.Models;
+using SimpleCRM.Domain.Models.RequestModels;
+using SimpleCRM.Domain.Services;
 
 namespace SimpleCRM.API.Controllers {
+
     [Route("api/[controller]")]
     [ApiController]
     public class CustomerController : ControllerBase {
-        // GET: api/<CustomerController>
+
+        public readonly ICustomerService _customerService;
+
+        public CustomerController(ICustomerService customerService) {
+            _customerService = customerService;
+        }
+
         [HttpGet]
-        public IEnumerable<string> Get() {
-            return new string[] { "value1", "value2" };
+        [Authorize]
+        public ActionResult Get() {
+            try {
+                var customers = _customerService.Get();
+                return Ok(customers);
+            } catch (Exception e) {
+                return BadRequest(e.Message);
+            }
         }
 
-        // GET api/<CustomerController>/5
-        [HttpGet("{id}")]
-        public string Get(int id) {
-            return "value";
-        }
-
-        // POST api/<CustomerController>
         [HttpPost]
-        public void Post([FromBody] string value) {
-        }
+        [Authorize]
+        public ActionResult<CustomerCreateRequest> Post([FromBody] CustomerCreateRequest customerCreateRequest) {
 
-        // PUT api/<CustomerController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value) {
-        }
+            if (!ModelState.IsValid) {
+                return BadRequest(ModelState);
+            }
 
-        // DELETE api/<CustomerController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id) {
+            try {
+                
+                CustomerModel customerModel = new CustomerModel() { 
+                    Name = customerCreateRequest.Name,
+                    Age = customerCreateRequest.Age,
+                    Phone = customerCreateRequest.Phone,
+                    Email = customerCreateRequest.Email,
+                };
+                _customerService.Insert(customerModel);
+                return Ok("Cliente inserido com sucesso.");
+
+            } catch (Exception e) {
+                return StatusCode(500, $"Erro interno: {e.Message}");
+            }
         }
     }
 }

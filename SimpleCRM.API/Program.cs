@@ -8,6 +8,7 @@ using System.Data;
 using Microsoft.Data.SqlClient;
 using SimpleCRM.Domain.Repositories;
 using SimpleCRM.Infrastructure.Repositories;
+using SimpleCRM.Application.Mapper;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +16,9 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 IConfiguration configuration = builder.Configuration;
+
+// AutoMapper
+builder.Services.AddAutoMapper(typeof(MappingProfile));
 
 // Conexão com banco de dados
 builder.Services.AddScoped<IDbConnection>(db => new SqlConnection(
