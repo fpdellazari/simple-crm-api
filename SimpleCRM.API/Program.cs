@@ -13,11 +13,41 @@ using SimpleCRM.Infrastructure.Repositories.Reports;
 using SimpleCRM.Domain.Repositories.Reports;
 using SimpleCRM.Domain.Services.Reports;
 using SimpleCRM.Application.Services.Reports;
+using Newtonsoft.Json;
+using SimpleCRM.Domain.Services.Authentication;
+using SimpleCRM.Application.Services.Authentication;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Autenticação com Toeken JWT
+var privateKey = Encoding.ASCII.GetBytes(builder.Configuration["Jwt:PrivateKey"]);
+builder.Services.AddAuthentication(options => {
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+.AddJwtBearer(options => {
+    options.RequireHttpsMetadata = false;
+    options.SaveToken = true;
+    options.TokenValidationParameters = new TokenValidationParameters {
+        ValidateIssuer = false,
+        ValidateAudience = false,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(privateKey),
+        ClockSkew = TimeSpan.Zero
+    };
+    options.Events = new JwtBearerEvents {
+        OnChallenge = context => {
+            context.HandleResponse();
+            context.Response.StatusCode = 401;
+            context.Response.ContentType = "application/json";
+            var response = new { message = "Token de autenticação necessário. Forneça um token válido." };
+            return context.Response.WriteAsync(JsonConvert.SerializeObject(response));
+        }
+    };
+});
+
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 IConfiguration configuration = builder.Configuration;
 
@@ -30,6 +60,7 @@ builder.Services.AddScoped<IDbConnection>(db => new SqlConnection(
 
 // Services
 builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
+builder.Services.AddTransient<ITokenService, TokenService>();
 builder.Services.AddScoped<ICustomerService, CustomerService>();
 builder.Services.AddScoped<IContactHistoryService, ContactHistoryService>();
 builder.Services.AddScoped<IProductService, ProductService>();
@@ -43,14 +74,12 @@ builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<ISaleRepository, SaleRepository>();
 builder.Services.AddScoped<IDashboardsRepository, DashboardsRepository>();
 
-
-
 // Swagger
 builder.Services.AddSwaggerGen(swagger => {
     swagger.SwaggerDoc("v1", new OpenApiInfo {
         Version = "v1",
-        Title = "API Padrão em ASP.NET Core 8.0",
-        Description = "Padrão de API para criação de projetos .Net 8.0."
+        Title = "SimpleCRM API",
+        Description = "Esta API fornece funcionalidades básicas para um CRM, permitindo o gerenciamento de clientes, histórico de contatos e vendas, além de um relatório de desempenho."
     });
     swagger.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme() {
         Name = "Authorization",
@@ -73,24 +102,10 @@ builder.Services.AddSwaggerGen(swagger => {
     });
 });
 
-// Toeken JWT
-var key = Encoding.ASCII.GetBytes(builder.Configuration["Jwt:Secret"]);
-builder.Services.AddAuthentication(options => {
-    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-})
-.AddJwtBearer(options => {
-    options.TokenValidationParameters = new TokenValidationParameters {
-        ValidateIssuer = false,
-        ValidateAudience = false,
-        ValidateLifetime = true,
-        ValidateIssuerSigningKey = true,
-        IssuerSigningKey = new SymmetricSecurityKey(key),
-        ClockSkew = TimeSpan.Zero
-    };
-});
-
 var app = builder.Build();
+
+app.UseAuthentication();
+app.UseAuthorization();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment()) {
@@ -99,8 +114,6 @@ if (app.Environment.IsDevelopment()) {
 }
 
 app.UseHttpsRedirection();
-
-app.UseAuthorization();
 
 app.MapControllers();
 

@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 
 namespace SimpleCRM.Domain.Enums {
-    public enum ContactStatus {
+    public enum ContactType {
         [Description("Pré-Venda Realizada")]
         PreVendaRealizada = 1,
 

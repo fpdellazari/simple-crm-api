@@ -37,9 +37,9 @@ namespace SimpleCRM.API.Controllers {
 
             try {
                 SaleModel saleModel = new SaleModel() {
-                    CustomerId = saleCreateRequest.CustomerId,
-                    ProductId = saleCreateRequest.ProductId,
-                    Quantity = saleCreateRequest.Quantity
+                    CustomerId = (int) saleCreateRequest.CustomerId,
+                    ProductId = (int) saleCreateRequest.ProductId,
+                    Quantity = (int) saleCreateRequest.Quantity
                 };
 
                 _saleService.Insert(saleModel);

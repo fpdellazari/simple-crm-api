@@ -14,7 +14,7 @@ namespace SimpleCRM.Domain.Entities {
         public decimal TotalPrice { get; set; }
         public DateTime SaleDate { get; set; }
 
-        public virtual Customer Customer { get; set; }
-        public virtual Product Product { get; set; }
+        public virtual Customer? Customer { get; set; }
+        public virtual Product? Product { get; set; }
     }
 }

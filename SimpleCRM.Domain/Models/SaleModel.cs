@@ -14,7 +14,7 @@ namespace SimpleCRM.Domain.Models {
         public decimal TotalPrice { get; set; }
         public DateTime SaleDate { get; set; }
 
-        public CustomerModel Customer { get; set; }
-        public ProductModel Product { get; set; }
+        public CustomerModel? Customer { get; set; }
+        public ProductModel? Product { get; set; }
     }
 }

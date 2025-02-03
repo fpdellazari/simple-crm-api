@@ -10,10 +10,11 @@ namespace SimpleCRM.Domain.Models {
     public class ContactHistoryModel {
         public int Id { get; set; }
         public int CustomerId { get; set; }
-        public ContactStatus Type { get; set; }
+        public ContactType Type { get; set; }
+        public string TypeDescription { get; set; }
         public DateTime ContactDate { get; set; }
-        public string Notes { get; set; }
+        public string? Notes { get; set; }
 
-        public CustomerModel Customer{ get; set; }
+        public CustomerModel? Customer{ get; set; }
     }
 }

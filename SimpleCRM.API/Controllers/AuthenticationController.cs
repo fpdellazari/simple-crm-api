@@ -1,6 +1,6 @@
 ﻿using SimpleCRM.Domain.Models;
-using SimpleCRM.Domain.Services;
 using Microsoft.AspNetCore.Mvc;
+using SimpleCRM.Domain.Services.Authentication;
 
 namespace SimpleCRM.API.Controllers {
     public class AuthenticationController : Controller {

@@ -19,6 +19,7 @@ namespace SimpleCRM.API.Controllers {
         }
 
         [HttpGet]
+        //[ApiKey]
         [Authorize]
         public ActionResult Get() {
             try {
@@ -39,8 +40,8 @@ namespace SimpleCRM.API.Controllers {
 
             try {
                 ContactHistoryModel contactHistoryModel = new ContactHistoryModel() {
-                    CustomerId = contactHistoryCreateRequest.CustomerId,
-                    Type = contactHistoryCreateRequest.Type,
+                    CustomerId = (int) contactHistoryCreateRequest.CustomerId,
+                    Type = (Domain.Enums.ContactType) contactHistoryCreateRequest.Type,
                     Notes = contactHistoryCreateRequest.Notes
                 };
                 _contactHistoryService.Insert(contactHistoryModel);

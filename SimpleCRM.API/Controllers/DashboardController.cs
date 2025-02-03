@@ -5,6 +5,7 @@ using SimpleCRM.Domain.Services;
 using SimpleCRM.Domain.Services.Reports;
 
 namespace SimpleCRM.API.Controllers {
+
     [Route("api/[controller]")]
     [ApiController]
     public class DashboardController : ControllerBase {
@@ -26,6 +27,5 @@ namespace SimpleCRM.API.Controllers {
                 return StatusCode(500, $"Erro interno: {e.Message}");
             }
         }
-
     }
 }

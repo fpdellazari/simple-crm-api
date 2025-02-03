@@ -39,7 +39,7 @@ namespace SimpleCRM.API.Controllers {
             try {                
                 CustomerModel customerModel = new CustomerModel() { 
                     Name = customerCreateRequest.Name,
-                    Age = customerCreateRequest.Age,
+                    Age = (int) customerCreateRequest.Age,
                     Phone = customerCreateRequest.Phone,
                     Email = customerCreateRequest.Email,
                 };

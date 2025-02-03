@@ -9,10 +9,10 @@ namespace SimpleCRM.Domain.Entities {
     public class ContactHistory {
         public int Id { get; set; }
         public int CustomerId { get; set; }
-        public ContactStatus Type { get; set; }
+        public ContactType Type { get; set; }
         public DateTime ContactDate { get; set; }
-        public string Notes { get; set; }
+        public string? Notes { get; set; }
 
-        public Customer Customer { get; set; }
+        public Customer? Customer { get; set; }
     }
 }
