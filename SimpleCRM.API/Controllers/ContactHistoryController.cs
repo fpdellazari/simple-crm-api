@@ -20,14 +20,13 @@ namespace SimpleCRM.API.Controllers {
         }
 
         [HttpGet]
-        //[ApiKey]
         [Authorize]
         public ActionResult Get() {
             try {
                 var contactHistories = _contactHistoryService.Get();
                 return Ok(contactHistories);
             } catch (Exception e) {
-                return StatusCode(500, $"Erro interno: {e.Message}");
+                return StatusCode(500, new { Message = "Erro interno no servidor.", Details = e.Message });
             }
         }
 
@@ -46,10 +45,10 @@ namespace SimpleCRM.API.Controllers {
                     Notes = contactHistoryCreateRequest.Notes
                 };
                 _contactHistoryService.Insert(contactHistoryModel);
-                return Ok("Histórico de contato inserido com sucesso.");
+                return Ok(new { Message = "Histórico de contato inserido com sucesso." });
 
             } catch (Exception e) {
-                return StatusCode(500, $"Erro interno: {e.Message}");
+                return StatusCode(500, new { Message = "Erro interno no servidor.", Details = e.Message });
             }
         }
 

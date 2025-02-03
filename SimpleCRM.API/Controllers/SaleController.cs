@@ -24,7 +24,7 @@ namespace SimpleCRM.API.Controllers {
                 var sales = _saleService.Get();
                 return Ok(sales);
             } catch (Exception e) {
-                return StatusCode(500, $"Erro interno: {e.Message}");
+                return StatusCode(500, new { Message = "Erro interno no servidor.", Details = e.Message });
             }
         }
 
@@ -44,9 +44,10 @@ namespace SimpleCRM.API.Controllers {
                 };
 
                 _saleService.Insert(saleModel);
-                return Ok("Venda registrada com sucesso.");
+                return Ok(new { Message = "Venda registrada com sucesso." });
+
             } catch (Exception e) {
-                return StatusCode(500, $"Erro interno: {e.Message}");
+                return StatusCode(500, new { Message = "Erro interno no servidor.", Details = e.Message });
             }
         }
     }

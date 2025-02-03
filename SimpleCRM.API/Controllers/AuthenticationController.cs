@@ -19,11 +19,11 @@ namespace SimpleCRM.API.Controllers {
             try {
                 var token = await _authenticationService.Authenticate(authenticationModel);
                 if (token == "") {
-                    return Unauthorized();
+                    return Unauthorized(new { Message = "Usuário ou senha inválidos." });
                 }
-                return Ok(new { token = token });
+                return Ok(new { Message = "Token gerado com sucesso.", Token = token });
             } catch (Exception e) {
-                return BadRequest(e.Message);
+                return StatusCode(500, new { Message = "Erro interno no servidor.", Details = e.Message });
             }
         }
     }

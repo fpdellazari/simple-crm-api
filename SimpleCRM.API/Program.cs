@@ -47,6 +47,15 @@ builder.Services.AddAuthentication(options => {
     };
 });
 
+// CORS
+builder.Services.AddCors(options => {
+    options.AddPolicy("AllowAllOrigins", policy => {
+        policy.AllowAnyOrigin()
+              .AllowAnyMethod()
+              .AllowAnyHeader();
+    });
+});
+
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 IConfiguration configuration = builder.Configuration;
@@ -106,6 +115,8 @@ var app = builder.Build();
 
 app.UseAuthentication();
 app.UseAuthorization();
+
+app.UseCors("AllowAllOrigins");
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment()) {

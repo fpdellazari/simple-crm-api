@@ -24,7 +24,7 @@ namespace SimpleCRM.API.Controllers {
                 var customers = _customerService.Get();
                 return Ok(customers);
             } catch (Exception e) {
-                return StatusCode(500, $"Erro interno: {e.Message}");
+                return StatusCode(500, new { Message = "Erro interno no servidor.", Details = e.Message });
             }
         }
 
@@ -44,10 +44,10 @@ namespace SimpleCRM.API.Controllers {
                     Email = customerCreateRequest.Email,
                 };
                 _customerService.Insert(customerModel);
-                return Ok("Cliente inserido com sucesso.");
+                return Ok(new { Message = "Cliente inserido com sucesso." });
 
             } catch (Exception e) {
-                return StatusCode(500, $"Erro interno: {e.Message}");
+                return StatusCode(500, new { Message = "Erro interno no servidor.", Details = e.Message });
             }
         }
     }

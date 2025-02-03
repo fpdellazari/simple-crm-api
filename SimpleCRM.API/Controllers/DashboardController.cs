@@ -24,7 +24,7 @@ namespace SimpleCRM.API.Controllers {
                 return Ok(overviewReport);
 
             } catch (Exception e) {
-                return StatusCode(500, $"Erro interno: {e.Message}");
+                return StatusCode(500, new { Message = "Erro interno no servidor.", Details = e.Message });
             }
         }
     }
