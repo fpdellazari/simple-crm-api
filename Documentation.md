@@ -26,6 +26,8 @@ A API é composta por uma série de endpoints RESTful, proporcionando operaçõe
 
 Os testes da API podem ser realizados pelo Swagger.
 A ordem recomendada para utilizar a API é:
+- Autenticar e gerar um token: [POST] /api/Authentication
+- Inserir o token no cabeçalho Authorize (não é preciso digitar o "Bearer")
 - Inserir um cliente: [POST] /api/Customer
 - Listar os clientes: [GET] /api/Customer
 - Alterar um cliente: [PUT] /api/Customer
