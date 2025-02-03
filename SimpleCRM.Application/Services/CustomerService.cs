@@ -30,5 +30,10 @@ namespace SimpleCRM.Application.Services {
             var customer = _mapper.Map<Customer>(customerModel);
             _customerRepository.Insert(customer);
         }
+
+        public void Update(CustomerModel customerModel) {
+            var customer = _mapper.Map<Customer>(customerModel);
+            _customerRepository.Update(customer);
+        }
     }
 }

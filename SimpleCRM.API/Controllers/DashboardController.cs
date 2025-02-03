@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using SimpleCRM.Domain.Models.Reports;
 using SimpleCRM.Domain.Services;
 using SimpleCRM.Domain.Services.Reports;
 
@@ -18,7 +19,7 @@ namespace SimpleCRM.API.Controllers {
 
         [HttpGet]
         [Authorize]
-        public ActionResult Get() {
+        public ActionResult<OverviewReport> Get() {
             try {
                 var overviewReport = _dashboardsService.Get();
                 return Ok(overviewReport);

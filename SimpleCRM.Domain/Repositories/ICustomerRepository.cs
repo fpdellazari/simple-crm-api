@@ -9,5 +9,6 @@ namespace SimpleCRM.Domain.Repositories {
     public interface ICustomerRepository {
         IEnumerable<Customer> Get();
         void Insert(Customer customer);
+        void Update(Customer customer);
     }
 }

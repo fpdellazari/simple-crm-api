@@ -1,9 +1,30 @@
-# **SimpleCRM API**
-### **Descrição**
-- A **SimpleCRM API** fornece funcionalidades básicas para um CRM. Ela permite o gerenciamento de **clientes**, **histórico de contatos**, **vendas** e **relatórios de desempenho**. A API foi desenvolvida utilizando **ASP.NET Core 8.0** e implementa autenticação via **JWT** (JSON Web Tokens) para segurança.
+# SimpleCRM API
+
+## Descrição
+
+A **SimpleCRM API** fornece funcionalidades básicas para um CRM. Ela permite o gerenciamento de **clientes**, **histórico de contatos**, **vendas** e **relatórios de desempenho**. A API foi desenvolvida utilizando **ASP.NET Core 8.0** e implementa autenticação via **JWT** (JSON Web Tokens) para segurança.
+
+A API é composta por uma série de endpoints RESTful, proporcionando operações CRUD (Create, Read e Update) sobre os recursos principais.
+
+## Funcionalidades
+
+- **Autenticação**: Sistema de login com geração de **JWT** para autenticação segura.
+- **Gerenciamento de Clientes**: Criação, leitura e atualização de clientes.
+- **Histórico de Contatos**: Adicionar e listar histórico de interação com os clientes.
+- **Vendas**: Registro e acompanhamento de vendas realizadas.
+- **Relatórios**: Geração de relatórios de desempenho de vendas e atividades.
+
+## Tecnologias
+
+- **ASP.NET Core 8.0**
+- **Dapper ORM**
+- **JWT Authentication**
+- **Swagger** para documentação interativa
+- **AutoMapper** para mapeamento de entidades
 
 ---
-### **Endpoints**
+
+# **Endpoints**
 
 
 ## [POST] /api/Authentication
@@ -76,12 +97,12 @@ status code: 200
 Registra um novo cliente.
 
 ### Dados de requisição
-| Campo | Descrição | Tipo |
+| Campo | Descrição | Tipo | Validação |
 |---|---|---|
-| name | Nome do cliente. | `string` |
-| age | Idade do cliente. | `integer` |
-| phone | Telefone do cliente. | `string` |
-| email | E-mail do cliente. | `string` |
+| name | Nome do cliente. | `string` | obrigatório, máximo 100 caracteres |
+| age | Idade do cliente. | `integer` | obrigatório, entre 0 e 200 |
+| phone | Telefone do cliente. | `string` | obrigatório, telefone válido |
+| email | E-mail do cliente. | `string` | email válido |
 
 ### Exemplo de requisição:
 
@@ -101,6 +122,41 @@ status code: 200
 ```json
 {
   "message": "Cliente inserido com sucesso."
+}
+```
+
+## [PUT] /api/Customer
+
+Atualiza os dados de um cliente.
+
+### Dados de requisição
+| Campo | Descrição | Tipo | Validação |
+|---|---|---|
+| id | ID do cliente. | `integer` | obrigatório |
+| name | Nome do cliente. | `string` | obrigatório, máximo 100 caracteres |
+| age | Idade do cliente. | `integer` | obrigatório, entre 0 e 200 |
+| phone | Telefone do cliente. | `string` | obrigatório, telefone válido |
+| email | E-mail do cliente. | `string` | email válido |
+
+### Exemplo de requisição:
+
+```json
+{
+  "id": 2,
+  "name": "Marcos",
+  "age": 33,
+  "phone": "1156987545",
+  "email": ""
+}
+```
+
+### Retorno esperado:
+
+status code: 200
+
+```json
+{
+  "message": "Cliente atualizado com sucesso."
 }
 ```
 
@@ -166,11 +222,11 @@ Os tipos de contato são:
 - 5: Telefone Errado
 
 ### Dados de requisição
-| Campo | Descrição | Tipo |
+| Campo | Descrição | Tipo | Validação |
 |---|---|---|
-| customerId | ID do cliente. | `string` |
-| type | Tipo de contato. | `integer` |
-| notes | Observações sobre o contato. | `string` |
+| customerId | ID do cliente. | `string` | obrigatório |
+| type | Tipo de contato. | `integer` | obrigatório, entre 1 e 5 |
+| notes | Observações sobre o contato. | `string` | |
 
 ### Exemplo de requisição:
 
@@ -241,11 +297,11 @@ Os tipos de produto são:
 - 3: Plano Elite 69,90
 
 ### Dados de requisição
-| Campo | Descrição | Tipo |
+| Campo | Descrição | Tipo | Validação |
 |---|---|---|
-| customerId | ID do cliente. | `string` |
-| productId | ID do produto. | `integer` |
-| quantity | Quantidade de itens. | `string` |
+| customerId | ID do cliente. | `string` | obrigatório |
+| productId | ID do produto. | `integer` | obrigatório |
+| quantity | Quantidade de itens. | `string` | obrigatório |
 
 ### Exemplo de requisição:
 

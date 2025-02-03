@@ -21,7 +21,7 @@ namespace SimpleCRM.API.Controllers {
 
         [HttpGet]
         [Authorize]
-        public ActionResult Get() {
+        public ActionResult<IEnumerable<ContactHistoryModel>> Get() {
             try {
                 var contactHistories = _contactHistoryService.Get();
                 return Ok(contactHistories);

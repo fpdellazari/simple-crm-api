@@ -45,5 +45,18 @@ namespace SimpleCRM.Infrastructure.Repositories {
 
             _dbConnection.Execute(query, customer);
         }
+
+        public void Update(Customer customer) {
+
+            string query = @" UPDATE Customer SET Name = @Name,
+				                                  Age = @Age,
+				                                  Phone = @Phone,
+				                                  Email = @Email,
+				                                  UpdatedAt = GETDATE()
+                                     WHERE Id = @Id; ";
+
+            _dbConnection.Execute(query, customer);
+        }
+
     }
 }

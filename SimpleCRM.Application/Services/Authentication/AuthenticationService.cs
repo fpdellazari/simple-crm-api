@@ -22,7 +22,7 @@ namespace SimpleCRM.Application.Services.Authentication {
         }
 
         public async Task<string> Authenticate(AuthenticationModel authentication) {
-            if (authentication.Username != "admin" || authentication.Password != "123456") return "";
+            if (authentication.Username != "admin" || authentication.Password != "m5sAI0jGW83bQenkzP4t") return "";
             var token = _tokenService.Generate(authentication.Username);
             return token;
         }

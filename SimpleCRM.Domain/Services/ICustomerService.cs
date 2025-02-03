@@ -9,5 +9,6 @@ namespace SimpleCRM.Domain.Services {
     public interface ICustomerService {
         IEnumerable<CustomerModel> Get();
         void Insert(CustomerModel customerModel);
+        void Update(CustomerModel customerModel);
     }
 }

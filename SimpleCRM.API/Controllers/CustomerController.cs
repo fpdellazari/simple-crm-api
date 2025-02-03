@@ -19,7 +19,7 @@ namespace SimpleCRM.API.Controllers {
 
         [HttpGet]
         [Authorize]
-        public ActionResult Get() {
+        public ActionResult<IEnumerable<CustomerModel>> Get() {
             try {
                 var customers = _customerService.Get();
                 return Ok(customers);
@@ -30,7 +30,7 @@ namespace SimpleCRM.API.Controllers {
 
         [HttpPost]
         [Authorize]
-        public ActionResult<string> Post([FromBody] CustomerCreateRequest customerCreateRequest) {
+        public ActionResult Post([FromBody] CustomerCreateRequest customerCreateRequest) {
 
             if (!ModelState.IsValid) {
                 return BadRequest(ModelState);
@@ -45,6 +45,30 @@ namespace SimpleCRM.API.Controllers {
                 };
                 _customerService.Insert(customerModel);
                 return Ok(new { Message = "Cliente inserido com sucesso." });
+
+            } catch (Exception e) {
+                return StatusCode(500, new { Message = "Erro interno no servidor.", Details = e.Message });
+            }
+        }
+
+        [HttpPut]
+        [Authorize]
+        public ActionResult Put([FromBody] CustomerUpdateRequest customerUpdateRequest) {
+
+            if (!ModelState.IsValid) {
+                return BadRequest(ModelState);
+            }
+
+            try {
+                CustomerModel customerModel = new CustomerModel() {
+                    Id = (int) customerUpdateRequest.Id,
+                    Name = customerUpdateRequest.Name,
+                    Age = (int) customerUpdateRequest.Age,
+                    Phone = customerUpdateRequest.Phone,
+                    Email = customerUpdateRequest.Email,
+                };
+                _customerService.Update(customerModel);
+                return Ok(new { Message = "Cliente atualizado com sucesso." });
 
             } catch (Exception e) {
                 return StatusCode(500, new { Message = "Erro interno no servidor.", Details = e.Message });
