@@ -5,18 +5,18 @@
 ---
 ### **Endpoints**
 
-**POST**
-### /api/Authentication
+
+## [POST] /api/Authentication
 
 Concede acesso à API. Gera um token JWT que deve ser anexado ao header Authorization para acesso aos outros endpoints.
 
-## Dados de requisição
+### Dados de requisição
 | Campo | Descrição | Tipo |
 |---|---|---|
 | username | Usuário para autenticação. | `string` |
 | password | Senha. | `string` |
 
-## Exemplo de requisição:
+### Exemplo de requisição:
 
 ```json
 {
@@ -25,7 +25,7 @@ Concede acesso à API. Gera um token JWT que deve ser anexado ao header Authoriz
 }
 ```
 
-## Retorno esperado:
+### Retorno esperado:
 
 status code: 200
 
@@ -36,14 +36,14 @@ status code: 200
 }
 ```
 
-**GET**
-### /api/Customer
+
+## [GET] /api/Customer
 
 Lista os clientes cadastrados.
 
-## Sem corpo de requisição
+### Sem corpo de requisição
 
-## Retorno esperado:
+### Retorno esperado:
 
 status code: 200
 
@@ -70,12 +70,12 @@ status code: 200
 ]
 ```
 
-**POST**
-### /api/Customer
+
+## [POST] /api/Customer
 
 Registra um novo cliente.
 
-## Dados de requisição
+### Dados de requisição
 | Campo | Descrição | Tipo |
 |---|---|---|
 | name | Nome do cliente. | `string` |
@@ -83,7 +83,7 @@ Registra um novo cliente.
 | phone | Telefone do cliente. | `string` |
 | email | E-mail do cliente. | `string` |
 
-## Exemplo de requisição:
+### Exemplo de requisição:
 
 ```json
 {
@@ -94,7 +94,7 @@ Registra um novo cliente.
 }
 ```
 
-## Retorno esperado:
+### Retorno esperado:
 
 status code: 200
 
@@ -104,14 +104,14 @@ status code: 200
 }
 ```
 
-**GET**
-### /api/ContactHistory
+
+## [GET] /api/ContactHistory
 
 Lista o histórico de contatos e os dados dos clientes contatados.
 
-## Sem corpo de requisição
+### Sem corpo de requisição
 
-## Retorno esperado:
+### Retorno esperado:
 
 status code: 200
 
@@ -154,8 +154,8 @@ status code: 200
 ]
 ```
 
-**POST**
-### /api/ContactHistory
+
+## [POST] /api/ContactHistory
 
 Insere o registro de um contato com um cliente.
 Os tipos de contato são:
@@ -165,14 +165,14 @@ Os tipos de contato são:
 - 4: Não Atendeu
 - 5: Telefone Errado
 
-## Dados de requisição
+### Dados de requisição
 | Campo | Descrição | Tipo |
 |---|---|---|
 | customerId | ID do cliente. | `string` |
 | type | Tipo de contato. | `integer` |
 | notes | Observações sobre o contato. | `string` |
 
-## Exemplo de requisição:
+### Exemplo de requisição:
 
 ```json
 {
@@ -182,7 +182,7 @@ Os tipos de contato são:
 }
 ```
 
-## Retorno esperado:
+### Retorno esperado:
 
 status code: 200
 
@@ -192,14 +192,14 @@ status code: 200
 }
 ```
 
-**GET**
-### /api/Sale
+
+## GET /api/Sale
 
 Lista as vendas realizadas com detalhes do cliente e produto adquirido.
 
-## Sem corpo de requisição
+### Sem corpo de requisição
 
-## Retorno esperado:
+### Retorno esperado:
 
 status code: 200
 
@@ -231,8 +231,8 @@ status code: 200
 ]
 ```
 
-**POST**
-### /api/Sale
+
+## [POST] /api/Sale
 
 Registra a venda de um ou mais produtos para um cliente.
 Os tipos de produto são:
@@ -240,14 +240,14 @@ Os tipos de produto são:
 - 2: Plano Profissional 49,90
 - 3: Plano Elite 69,90
 
-## Dados de requisição
+### Dados de requisição
 | Campo | Descrição | Tipo |
 |---|---|---|
 | customerId | ID do cliente. | `string` |
 | productId | ID do produto. | `integer` |
 | quantity | Quantidade de itens. | `string` |
 
-## Exemplo de requisição:
+### Exemplo de requisição:
 
 ```json
 {
@@ -257,7 +257,7 @@ Os tipos de produto são:
 }
 ```
 
-## Retorno esperado:
+### Retorno esperado:
 
 status code: 200
 
@@ -267,14 +267,14 @@ status code: 200
 }
 ```
 
-**GET**
-### /api/Dashboard
+
+## [GET] /api/Dashboard
 
 Relatório de desempenho da operação de vendas.
 
-## Sem corpo de requisição
+### Sem corpo de requisição
 
-## Dados de resposta
+### Dados de resposta
 | Campo | Descrição | Tipo |
 |---|---|---|
 | totalContacts | Total de contatos realizados. | `integer` |
@@ -284,7 +284,7 @@ Relatório de desempenho da operação de vendas.
 | averageTicket | Ticket Médio (Valor total das vendas / Total de vendas realizadas). | `number` |
 | conversionRate | Taxa de conversão ((Total de vendas / Contatos produtivos) * 100). | `number` |
 
-## Retorno esperado:
+### Retorno esperado:
 
 status code: 200
 
