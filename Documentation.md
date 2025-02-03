@@ -6,6 +6,10 @@ A **SimpleCRM API** fornece funcionalidades básicas para um CRM. Ela permite o 
 
 A API é composta por uma série de endpoints RESTful, proporcionando operações CRUD (Create, Read e Update) sobre os recursos principais.
 
+A arquitetura foi baseada no modelo **DDD**, seguindo boas práticas de desenvolvimento como os princípios **SOLID**, **Clean Code** e **Clean Architecture**. O objetivo foi criar algo simples mas que pode ser facilmente escalável e testável.
+Também há um projeto de **testes unitários** com um primeiro teste do serviço de autenticação.
+
+
 ## Funcionalidades
 
 - **Autenticação**: Sistema de login com geração de **JWT** para autenticação segura.
