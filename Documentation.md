@@ -98,7 +98,7 @@ Registra um novo cliente.
 
 ### Dados de requisição
 | Campo | Descrição | Tipo | Validação |
-|---|---|---|
+|---|---|---|---|
 | name | Nome do cliente. | `string` | obrigatório, máximo 100 caracteres |
 | age | Idade do cliente. | `integer` | obrigatório, entre 0 e 200 |
 | phone | Telefone do cliente. | `string` | obrigatório, telefone válido |
@@ -131,7 +131,7 @@ Atualiza os dados de um cliente.
 
 ### Dados de requisição
 | Campo | Descrição | Tipo | Validação |
-|---|---|---|
+|---|---|---|---|
 | id | ID do cliente. | `integer` | obrigatório |
 | name | Nome do cliente. | `string` | obrigatório, máximo 100 caracteres |
 | age | Idade do cliente. | `integer` | obrigatório, entre 0 e 200 |
@@ -223,7 +223,7 @@ Os tipos de contato são:
 
 ### Dados de requisição
 | Campo | Descrição | Tipo | Validação |
-|---|---|---|
+|---|---|---|---|
 | customerId | ID do cliente. | `string` | obrigatório |
 | type | Tipo de contato. | `integer` | obrigatório, entre 1 e 5 |
 | notes | Observações sobre o contato. | `string` | |
@@ -298,7 +298,7 @@ Os tipos de produto são:
 
 ### Dados de requisição
 | Campo | Descrição | Tipo | Validação |
-|---|---|---|
+|---|---|---|---|
 | customerId | ID do cliente. | `string` | obrigatório |
 | productId | ID do produto. | `integer` | obrigatório |
 | quantity | Quantidade de itens. | `string` | obrigatório |
