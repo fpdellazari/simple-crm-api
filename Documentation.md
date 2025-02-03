@@ -22,6 +22,19 @@ A API é composta por uma série de endpoints RESTful, proporcionando operaçõe
 - **Swagger** para documentação interativa
 - **AutoMapper** para mapeamento de entidades
 
+## Roteiro para testes
+
+Os testes da API podem ser realizados pelo Swagger.
+A ordem recomendada para utilizar a API é:
+- Inserir um cliente: [POST] /api/Customer
+- Listar os clientes: [GET] /api/Customer
+- Alterar um cliente: [PUT] /api/Customer
+- Inserir um histórico de contato: [POST] /api/ContactHistory
+- Listar o histórico de contatos: [GET] /api/ContactHistory
+- Inserir uma venda: [POST] /api/Sale
+- Listar uma venda: [GET] /api/Sale
+- Verificar o relatório da operação: [GET] /api/Dashboard
+
 ---
 
 # **Endpoints**
