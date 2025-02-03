@@ -3,6 +3,9 @@ using Microsoft.AspNetCore.Mvc;
 using SimpleCRM.Domain.Services.Authentication;
 
 namespace SimpleCRM.API.Controllers {
+
+    [Route("api/[controller]")]
+    [ApiController]
     public class AuthenticationController : Controller {
 
         public readonly IAuthenticationService _authenticationService;
@@ -12,7 +15,6 @@ namespace SimpleCRM.API.Controllers {
         }
 
         [HttpPost]
-        [Route("api/[controller]/authenticate")]
         public async Task<IActionResult> Authenticate(AuthenticationModel authenticationModel) {
             try {
                 var token = await _authenticationService.Authenticate(authenticationModel);

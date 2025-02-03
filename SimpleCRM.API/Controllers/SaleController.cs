@@ -6,6 +6,7 @@ using SimpleCRM.Domain.Models.RequestModels;
 using SimpleCRM.Domain.Services;
 
 namespace SimpleCRM.API.Controllers {
+
     [Route("api/[controller]")]
     [ApiController]
     public class SaleController : ControllerBase {

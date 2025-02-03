@@ -8,6 +8,7 @@ using SimpleCRM.Domain.Services;
 using SimpleCRM.Domain.Entities;
 
 namespace SimpleCRM.API.Controllers {
+
     [Route("api/[controller]")]
     [ApiController]
     public class ContactHistoryController : ControllerBase {
