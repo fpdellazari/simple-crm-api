@@ -1,627 +1,304 @@
 # **SimpleCRM API**
-### **Info**
-- **Description**: A **SimpleCRM API** fornece funcionalidades básicas para um CRM. Ela permite o gerenciamento de **clientes**, **histórico de contatos**, **vendas** e **relatórios de desempenho**. A API foi desenvolvida utilizando **ASP.NET Core 8.0** e implementa autenticação via **JWT** (JSON Web Tokens) para segurança.
+### **Descrição**
+- A **SimpleCRM API** fornece funcionalidades básicas para um CRM. Ela permite o gerenciamento de **clientes**, **histórico de contatos**, **vendas** e **relatórios de desempenho**. A API foi desenvolvida utilizando **ASP.NET Core 8.0** e implementa autenticação via **JWT** (JSON Web Tokens) para segurança.
 
 ---
 ### **Endpoints**
 
+**POST**
 ### /api/Authentication
 
-**POST**
+Concede acesso à API. Gera um token JWT que deve ser anexado ao header Authorization para acesso aos outros endpoints.
 
-**[ Request Body ]** 
+## Dados de requisição
+| Campo | Descrição | Tipo |
+|---|---|---|
+| username | Usuário para autenticação. | `string` |
+| password | Senha. | `string` |
 
-- application/json:
-
-    - $schema: AuthenticationModel
-
-- text/json:
-
-    - $schema: AuthenticationModel
-
-- application/*+json:
-
-    - $schema: AuthenticationModel
-
-**Example Value**:
+## Exemplo de requisição:
 
 ```json
 {
-    "username" : string,
-    "password" : string
+    "username" : "Manager",
+    "password" : "1234"
 }
 ```
 
-**[ Responses ]**
+## Retorno esperado:
 
-code: 200
+status code: 200
 
-description: Success
-
-### /api/ContactHistory
+```json
+{
+  "message": "Token gerado com sucesso.",
+  "token": "{jwtToken}"
+}
+```
 
 **GET**
-
-**[ Responses ]**
-
-code: 200
-
-description: Success
-
-**POST**
-
-**[ Request Body ]** 
-
-- application/json:
-
-    - $schema: ContactHistoryCreateRequest
-
-- text/json:
-
-    - $schema: ContactHistoryCreateRequest
-
-- application/*+json:
-
-    - $schema: ContactHistoryCreateRequest
-
-**Example Value**:
-
-```json
-{
-    "customerId" : integer,
-    "type" : enum: [ 1, 2, 3, 4, 5 ],
-    "notes" : string
-}
-```
-
-**[ Responses ]**
-
-code: 200
-
-description: Success
-
-- text/plain:
-
-    - type: string
-
-- application/json:
-
-    - type: string
-
-- text/json:
-
-    - type: string
-
 ### /api/Customer
 
-**GET**
+Lista os clientes cadastrados.
 
-**[ Responses ]**
+## Sem corpo de requisição
 
-code: 200
+## Retorno esperado:
 
-description: Success
-
-**POST**
-
-**[ Request Body ]** 
-
-- application/json:
-
-    - $schema: CustomerCreateRequest
-
-- text/json:
-
-    - $schema: CustomerCreateRequest
-
-- application/*+json:
-
-    - $schema: CustomerCreateRequest
-
-**Example Value**:
-
-```json
-{
-    "name" : string,
-    "age" : integer,
-    "phone" : string,
-    "email" : string
-}
-```
-
-**[ Responses ]**
-
-code: 200
-
-description: Success
-
-- text/plain:
-
-    - type: string
-
-- application/json:
-
-    - type: string
-
-- text/json:
-
-    - type: string
-
-### /api/Dashboard
-
-**GET**
-
-**[ Responses ]**
-
-code: 200
-
-description: Success
-
-### /api/Sale
-
-**GET**
-
-**[ Responses ]**
-
-code: 200
-
-description: Success
-
-- text/plain:
-
-    - type: array ( $schema: SaleModel )
-
-- application/json:
-
-    - type: array ( $schema: SaleModel )
-
-- text/json:
-
-    - type: array ( $schema: SaleModel )
-
-**Example Value**:
+status code: 200
 
 ```json
 [
-    {
-        "id" : integer,
-        "customerId" : integer,
-        "productId" : integer,
-        "quantity" : integer,
-        "unitPrice" : number,
-        "totalPrice" : number,
-        "saleDate" : string,
-        "customer" : {
-            "id" : integer,
-            "name" : string,
-            "age" : integer,
-            "phone" : string,
-            "email" : string,
-            "createdAt" : string,
-            "updatedAt" : string
-        },
-        "product" : {
-            "id" : integer,
-            "name" : string,
-            "price" : number
-        }
-    }
+  {
+    "id": 1,
+    "name": "Carlos",
+    "age": 25,
+    "phone": "519984455",
+    "email": "email@email.com",
+    "createdAt": "2025-01-31T23:41:29.79",
+    "updatedAt": null
+  },
+  {
+    "id": 2,
+    "name": "Joana",
+    "age": 42,
+    "phone": "519984455",
+    "email": "email@email.com",
+    "createdAt": "2025-01-31T23:44:01.447",
+    "updatedAt": null
+  }
 ]
 ```
 
 **POST**
+### /api/Customer
 
-**[ Request Body ]** 
+Registra um novo cliente.
 
-- application/json:
+## Dados de requisição
+| Campo | Descrição | Tipo |
+|---|---|---|
+| name | Nome do cliente. | `string` |
+| age | Idade do cliente. | `integer` |
+| phone | Telefone do cliente. | `string` |
+| email | E-mail do cliente. | `string` |
 
-    - $schema: SaleCreateRequest
-
-- text/json:
-
-    - $schema: SaleCreateRequest
-
-- application/*+json:
-
-    - $schema: SaleCreateRequest
-
-**Example Value**:
+## Exemplo de requisição:
 
 ```json
 {
-    "customerId" : integer,
-    "productId" : integer,
-    "quantity" : integer
+  "name": "Marcos",
+  "age": 33,
+  "phone": "1156987545",
+  "email": ""
 }
 ```
 
-**[ Responses ]**
+## Retorno esperado:
+
+status code: 200
+
+```json
+{
+  "message": "Cliente inserido com sucesso."
+}
+```
+
+**GET**
+### /api/ContactHistory
+
+Lista o histórico de contatos e os dados dos clientes contatados.
+
+## Sem corpo de requisição
+
+## Retorno esperado:
+
+status code: 200
+
+```json
+[
+  {
+    "id": 1,
+    "customerId": 1,
+    "type": 1,
+    "typeDescription": "Pré-Venda Realizada",
+    "contactDate": "2025-02-01T15:52:20.24",
+    "notes": "",
+    "customer": {
+      "id": 1,
+      "name": "Carlos",
+      "age": 25,
+      "phone": "519984455",
+      "email": "email@email.com",
+      "createdAt": "2025-01-31T23:41:29.79",
+      "updatedAt": null
+    }
+  },
+  {
+    "id": 2,
+    "customerId": 2,
+    "type": 2,
+    "typeDescription": "Interesse Futuro",
+    "contactDate": "2025-02-01T15:52:53",
+    "notes": "",
+    "customer": {
+      "id": 2,
+      "name": "Joana",
+      "age": 42,
+      "phone": "519984455",
+      "email": "email@email.com",
+      "createdAt": "2025-01-31T23:44:01.447",
+      "updatedAt": null
+    }
+  }
+]
+```
+
+**POST**
+### /api/ContactHistory
+
+Insere o registro de um contato com um cliente.
+Os tipos de contato são:
+- 1: Pré-Venda Realizada
+- 2: Interesse Futuro
+- 3: Sem Interesse
+- 4: Não Atendeu
+- 5: Telefone Errado
+
+## Dados de requisição
+| Campo | Descrição | Tipo |
+|---|---|---|
+| customerId | ID do cliente. | `string` |
+| type | Tipo de contato. | `integer` |
+| notes | Observações sobre o contato. | `string` |
+
+## Exemplo de requisição:
+
+```json
+{
+    "customerId" : 1,
+    "type" : 2,
+    "notes" : "Retornar ao cliente pela manhã."
+}
+```
+
+## Retorno esperado:
+
+status code: 200
+
+```json
+{
+  "message": "Histórico de contato inserido com sucesso."
+}
+```
+
+**GET**
+### /api/Sale
+
+Lista as vendas realizadas com detalhes do cliente e produto adquirido.
+
+## Sem corpo de requisição
+
+## Retorno esperado:
+
+status code: 200
+
+```json
+[
+  {
+    "id": 1,
+    "customerId": 1,
+    "productId": 1,
+    "quantity": 3,
+    "unitPrice": 19.9,
+    "totalPrice": 59.7,
+    "saleDate": "2025-02-01T19:52:17.67",
+    "customer": {
+      "id": 1,
+      "name": "Carlos",
+      "age": 25,
+      "phone": "519984455",
+      "email": "email@email.com",
+      "createdAt": "2025-01-31T23:41:29.79",
+      "updatedAt": null
+    },
+    "product": {
+      "id": 1,
+      "name": "Plano Essencial",
+      "price": 19.9
+    }
+  }
+]
+```
+
+**POST**
+### /api/Sale
+
+Registra a venda de um ou mais produtos para um cliente.
+Os tipos de produto são:
+- 1: Plano Essencial 19,90
+- 2: Plano Profissional 49,90
+- 3: Plano Elite 69,90
+
+## Dados de requisição
+| Campo | Descrição | Tipo |
+|---|---|---|
+| customerId | ID do cliente. | `string` |
+| productId | ID do produto. | `integer` |
+| quantity | Quantidade de itens. | `string` |
+
+## Exemplo de requisição:
+
+```json
+{
+  "customerId": 2,
+  "productId": 3,
+  "quantity": 1
+}
+```
+
+## Retorno esperado:
+
+status code: 200
+
+```json
+{
+  "message": "Venda registrada com sucesso."
+}
+```
+
+**GET**
+### /api/Dashboard
+
+Relatório de desempenho da operação de vendas.
+
+## Sem corpo de requisição
+
+## Dados de resposta
+| Campo | Descrição | Tipo |
+|---|---|---|
+| totalContacts | Total de contatos realizados. | `integer` |
+| totalProductiveContacts | Total de contatos produtivos (Pré-Venda Realizada ou Interesse Futuro). | `integer` |
+| totalSalesCount | Total de vendas realizadas. | `integer` |
+| totalSalesValue | Valor total das vendas. | `number` |
+| averageTicket | Ticket Médio (Valor total das vendas / Total de vendas realizadas). | `number` |
+| conversionRate | Taxa de conversão ((Total de vendas / Contatos produtivos) * 100). | `number` |
+
+## Retorno esperado:
+
+status code: 200
+
+```json
+{
+  "totalContacts": 25,
+  "totalProductiveContacts": 7,
+  "totalSalesCount": 10,
+  "totalSalesValue": 858.1,
+  "averageTicket": 85.81,
+  "conversionRate": 142.857142857
+}
+```
 
-code: 200
 
-description: Success
 
 
----
-### **Components**
-### Schemas
-**AuthenticationModel**
-
-**username**:
-
-- **string**
-
-    - _required: true_
-
-    - _nullable: false_
-
-    - _minLength: 1_
-
-**password**:
-
-- **string**
-
-    - _required: true_
-
-    - _nullable: false_
-
-    - _minLength: 1_
-
-
-
-
-
-**ContactHistoryCreateRequest**
-
-**customerId**:
-
-- **integer**
-
-    - _format: int32_
-
-    - _required: true_
-
-    - _nullable: false_
-
-**type**:
-
-- **ContactType**
-
-    - _required: true_
-
-    - _nullable: false_
-
-**notes**:
-
-- **string**
-
-    - _required: false_
-
-    - _nullable: true_
-
-
-
-
-
-**ContactType**
-
-enum: [ 1, 2, 3, 4, 5 ]
-
-
-
-
-
-**CustomerCreateRequest**
-
-**name**:
-
-- **string**
-
-    - _required: true_
-
-    - _nullable: false_
-
-    - _maxLength: 100_
-
-    - _minLength: 0_
-
-**age**:
-
-- **integer**
-
-    - _format: int32_
-
-    - _required: true_
-
-    - _nullable: false_
-
-    - _maximum: 200_
-
-    - _minimum: 16_
-
-**phone**:
-
-- **string**
-
-    - _required: true_
-
-    - _nullable: false_
-
-    - _minLength: 1_
-
-    - _pattern: ^\d{8,12}$_
-
-**email**:
-
-- **string**
-
-    - _format: email_
-
-    - _required: false_
-
-    - _nullable: true_
-
-
-
-
-
-**CustomerModel**
-
-**id**:
-
-- **integer**
-
-    - _format: int32_
-
-    - _required: false_
-
-    - _nullable: false_
-
-**name**:
-
-- **string**
-
-    - _required: false_
-
-    - _nullable: true_
-
-**age**:
-
-- **integer**
-
-    - _format: int32_
-
-    - _required: false_
-
-    - _nullable: false_
-
-**phone**:
-
-- **string**
-
-    - _required: false_
-
-    - _nullable: true_
-
-**email**:
-
-- **string**
-
-    - _required: false_
-
-    - _nullable: true_
-
-**createdAt**:
-
-- **string**
-
-    - _format: date-time_
-
-    - _required: false_
-
-    - _nullable: false_
-
-**updatedAt**:
-
-- **string**
-
-    - _format: date-time_
-
-    - _required: false_
-
-    - _nullable: true_
-
-
-
-
-
-**ProductModel**
-
-**id**:
-
-- **integer**
-
-    - _format: int32_
-
-    - _required: false_
-
-    - _nullable: false_
-
-**name**:
-
-- **string**
-
-    - _required: false_
-
-    - _nullable: true_
-
-**price**:
-
-- **number**
-
-    - _format: double_
-
-    - _required: false_
-
-    - _nullable: false_
-
-
-
-
-
-**SaleCreateRequest**
-
-**customerId**:
-
-- **integer**
-
-    - _format: int32_
-
-    - _required: true_
-
-    - _nullable: false_
-
-**productId**:
-
-- **integer**
-
-    - _format: int32_
-
-    - _required: true_
-
-    - _nullable: false_
-
-    - _maximum: 3_
-
-    - _minimum: 1_
-
-**quantity**:
-
-- **integer**
-
-    - _format: int32_
-
-    - _required: true_
-
-    - _nullable: false_
-
-    - _maximum: 2147483647_
-
-    - _minimum: 1_
-
-
-
-
-
-**SaleModel**
-
-**id**:
-
-- **integer**
-
-    - _format: int32_
-
-    - _required: false_
-
-    - _nullable: false_
-
-**customerId**:
-
-- **integer**
-
-    - _format: int32_
-
-    - _required: false_
-
-    - _nullable: false_
-
-**productId**:
-
-- **integer**
-
-    - _format: int32_
-
-    - _required: false_
-
-    - _nullable: false_
-
-**quantity**:
-
-- **integer**
-
-    - _format: int32_
-
-    - _required: false_
-
-    - _nullable: false_
-
-**unitPrice**:
-
-- **number**
-
-    - _format: double_
-
-    - _required: false_
-
-    - _nullable: false_
-
-**totalPrice**:
-
-- **number**
-
-    - _format: double_
-
-    - _required: false_
-
-    - _nullable: false_
-
-**saleDate**:
-
-- **string**
-
-    - _format: date-time_
-
-    - _required: false_
-
-    - _nullable: false_
-
-**customer**:
-
-- **CustomerModel**
-
-    - _required: false_
-
-    - _nullable: false_
-
-**product**:
-
-- **ProductModel**
-
-    - _required: false_
-
-    - _nullable: false_
-
-
-
-
-
-
----
-### Security Schemes
-**Bearer**
-
-- type: http
-
-- description: Insira seu token JWT.
-
-- scheme: Bearer
-
-- bearerFormat: JWT
-
-
----
-### Security
-**Bearer**
-
-[  ]
----

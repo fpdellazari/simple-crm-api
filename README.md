@@ -26,6 +26,6 @@ A API é composta por uma série de endpoints RESTful, proporcionando operaçõe
 
 Para mais detalhes, acesse a documentação completa da API:
 
-[Documentação Completa da SimpleCRM API](https://simplecrm.apidocumentation.com)
+[Documentação Completa](https://github.com/fpdellazari/simple-crm-api/blob/main/Documentation.md)
 
 
