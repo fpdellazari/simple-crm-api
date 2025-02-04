@@ -130,7 +130,7 @@ Registra um novo cliente.
   "name": "Marcos",
   "age": 33,
   "phone": "1156987545",
-  "email": ""
+  "email": "example@email.com"
 }
 ```
 
@@ -165,7 +165,7 @@ Atualiza os dados de um cliente.
   "name": "Marcos",
   "age": 33,
   "phone": "1156987545",
-  "email": ""
+  "email": "example@email.com"
 }
 ```
 
